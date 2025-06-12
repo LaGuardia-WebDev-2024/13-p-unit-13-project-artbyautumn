@@ -1,21 +1,52 @@
+body {
+  background-color: #f389b9;
+  font-family: Arial, sans-serif;
+}
+h1 {
+  color: #ee008c;
+}
+button {
+  padding: 10px;
+}
+h2 {
+  color: #007db0;
+  font-size: 20px
+}
+h3 {
+  color: #006730;
+  font-size: 20px
+}
+h4 {
+  color: #570861;
+  font-size: 20px
+}
+
+
 #movie-result {
-  background: rgb(244, 98, 181);
+  background: #c30159;
   border: 5px solid black;
   font-size: 24px;
-  height: 160px;
+  height: 60px;
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
 #book-result {
-  background: rgb(196, 159, 255);
+  background: #d8006f;
   border: 5px solid black;
   font-size: 24px;
-  height: 160px;
+  height: 60px;
   margin-top: 10px;
   margin-bottom: 20px;
 }
-
+#music-result {
+  background: #fac1d2;
+  border: 5px solid black;
+  font-size: 24px;
+  height: 60px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 hr {
   height: 5px;
   background-color: black;
