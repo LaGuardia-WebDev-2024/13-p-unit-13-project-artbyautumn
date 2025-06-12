@@ -1,12 +1,12 @@
 <!-- Unit 13 Project
 Requirements
-[  ] Two Interactive Drop-down Inputs 
-[  ] Two Different jQuery Animation Methods 
-[  ] Add Five CSS Declarations
-[  ] Include Three Images
+[ X ] Two Interactive Drop-down Inputs 
+[X  ] Two Different jQuery Animation Methods 
+[ X ] Add Five CSS Declarations
+[X ] Include Three Images
 
 Select ONE Additional Feature to Add  
-[ no ] Feature 1 - Google Font
+[ yes] Feature 1 - Google Font
 [ no ] Feature 2 - Upload a Font
 [ no ] Feature 3 - .mouseover() Method
 [ no ] Feature 4 - :hover Feature 
@@ -21,17 +21,17 @@ Select ONE Additional Feature to Add
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1>Quiz About [Me]</h1>
+    <h1 id="quiz-text">Quiz About Autumn! 😻</h1>
     <hr />
     <!-- Movie Question -->
     <form id="movie-form">
       <label>
-        🎥 What is my favorite movie?
+        <h2 id="movie-text">🎥 What is my favorite movie?</h2>
         <select id="movie-answer">
-          <option value="movie1">movie 1</option>
-          <option value="movie2">movie 2</option>
-          <option value="movie3">movie 3</option>
-          <option value="movie4">movie 4</option>
+          <option value="TexasChainsawMassacre">Texas Chainsaw Massacre</option>
+          <option value="Buffalo66">Buffalo 66'</option>
+          <option value="TheIncredibles">The Incredibles</option>
+          <option value="DinnerinAmerica">Dinner in America</option>
         </select>
       </label>
       <button type="submit">Check Movie Answer</button>
@@ -41,19 +41,64 @@ Select ONE Additional Feature to Add
     <!-- Book Question -->
     <form id="book-form">
       <label>
-        📖 What is my favorite book?
+        <h3 id="book-text">📖 What is my favorite book?</h3>
         <select id="book-answer">
-          <option value="book1">book 1</option>
-          <option value="book2">book 2</option>
-          <option value="book3">book 3</option>
-          <option value="book4">book 4</option>
+          <option value="CatcherandtheRye">Catcher and the Rye</option>
+          <option value="WutheringHeights">Wuthering Heights</option>
+          <option value="GirlInterruppted">Girl Interruppted</option>
+          <option value="MYORAR">My Year of Rest and Relaxtion</option>
         </select>
       </label>
       <button type="submit">Check Book Answer</button>
     </form>
     <div id="book-result"></div>
+
+    <!-- Music Question -->
+    <form id="music-form">
+      <label>
+        <h4 id="music-text">🎧 What is my favorite band?</h4>
+        <select id="music-answer">
+          <option value="TheDoors">The Doors</option>
+          <option value="TheCure">The Cure</option>
+          <option value="DepecheMode">Depeche Mode</option>
+          <option value="Nirvana">Nirvana</option>
+        </select>
+      </label>
+      <button type="submit">Check Music Answer</button>
+    </form>
+    <div id="music-result"></div>
+    <hr />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
+      $("#quiz-text").hide();
+      $("#movie-text").hide();
+      $("#book-text").hide();
+      $("#music-text").hide();
+
+      $("#quiz-text").slideDown(3000, function () {
+      $("#movie-text").fadeIn();
+        $("#book-text").fadeIn();
+        $("#music-text").fadeIn();
+      });
+
+      $("#main-title").mouseover(function () {
+        $(this).css("color", "#ca1090");
+      });
+      var movieImages = {
+        Buffalo66:
+          "https://www.rogerebert.com/wp-content/uploads/2024/03/Buffalo-66.jpg",
+      };
+
+      var bookImages = {
+        MYORAR:
+          "https://static01.nyt.com/images/2018/07/03/books/03bookmoshfegh1/03bookmoshfegh1-articleLarge.jpg?quality=75&auto=webp&disable=upscale",
+      };
+      var musicImages = {
+        DepecheMode:
+          "https://rockhall.com/wp-content/uploads/2024/03/depeche_mode_-_FINAL_IMAGE.jpg",
+      };
+
       //Movie Question jQuery Code
       $("#movie-form").on("submit", function (event) {
         event.preventDefault();
@@ -61,8 +106,14 @@ Select ONE Additional Feature to Add
         var $answer = $("#movie-answer");
         var answer = $answer.val();
 
-        if (answer === "movie1") {
+        if (answer === "Buffalo66") {
           $("#movie-result").text("YESSSS!");
+          var movieAnswer = $("#movie-answer").val();
+          console.log(movieAnswer);
+          var $img = $("<img>");
+          $img.width(300);
+          $img.attr("src", movieImages[movieAnswer]);
+          $img.appendTo("body");
         } else {
           $("#movie-result").text("Try Again!");
         }
@@ -75,10 +126,35 @@ Select ONE Additional Feature to Add
         var $answer = $("#book-answer");
         var answer = $answer.val();
 
-        if (answer === "book1") {
+        if (answer === "MYORAR") {
           $("#book-result").text("YESSSS!");
+          var bookAnswer = $("#book-answer").val();
+          console.log(bookAnswer);
+          var $img = $("<img>");
+          $img.width(200);
+          $img.attr("src", bookImages[bookAnswer]);
+          $img.appendTo("body");
         } else {
           $("#book-result").text("Try Again!");
+        }
+      });
+      //Music Question jQuery Code
+      $("#music-form").on("submit", function (event) {
+        event.preventDefault();
+
+        var $answer = $("#music-answer");
+        var answer = $answer.val();
+
+        if (answer === "DepecheMode") {
+          $("#music-result").text("YESSSS!");
+          var musicAnswer = $("#music-answer").val();
+          console.log(musicAnswer);
+          var $img = $("<img>");
+          $img.width(300);
+          $img.attr("src", musicImages[musicAnswer]);
+          $img.appendTo("body");
+        } else {
+          $("#music-result").text("Try Again!");
         }
       });
     </script>
